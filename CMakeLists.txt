@@ -1,3 +1,7 @@
+# Build commands (run from the build/ directory):
+#   cmake ..                                         — regenerate build files
+#   cmake --build .                                  — compile
+#   .\Debug\AutomotiveDigitalTwin.exe --config "../config.toml"   — run
 cmake_minimum_required(VERSION 3.15)
 project(AutomotiveDigitalTwin LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
@@ -13,6 +17,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(tomlplusplus)
 
-add_executable(AutomotiveDigitalTwin src/main.cpp src/logger.cpp src/config.cpp src/ev_model.cpp)
+add_executable(AutomotiveDigitalTwin src/main.cpp src/logger.cpp src/config.cpp src/ev_model.cpp src/signal_bus.cpp src/bus_connector.cpp src/engine.cpp)
 target_include_directories(AutomotiveDigitalTwin PRIVATE include/)
 target_link_libraries(AutomotiveDigitalTwin PRIVATE tomlplusplus::tomlplusplus)
+file(COPY interfaces/ DESTINATION interfaces/)

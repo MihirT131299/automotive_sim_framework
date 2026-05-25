@@ -1,0 +1,8 @@
+[model]
+name = "ev_model"
+
+[writes]
+velocity = { bus_name = "ev.velocity", default = 0.0 }
+
+[reads]
+throttle = { bus_name = "sim.throttle", default = 0.25 }
