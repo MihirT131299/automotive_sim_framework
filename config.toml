@@ -1,3 +1,6 @@
+[engine]
+models = ["ev_model"]
+
 [simulation_loop_settings]
 t_start = 0.0
 t_end = 13.0
