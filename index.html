@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Digital Twin — CI Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #1a1a2e; color: #eee; margin: 0; padding: 20px; }
+        .header { text-align: center; padding: 30px 0; }
+        .header h1 { font-size: 1.8em; margin: 0; color: #a0c4ff; }
+        .header p { color: #888; margin: 8px 0 0; }
+        .overall { text-align: center; padding: 20px; margin: 20px auto; max-width: 400px; border-radius: 8px; background: #2ecc7122; border: 2px solid #2ecc71; }
+        .overall h2 { margin: 0; color: #2ecc71; font-size: 1.4em; }
+        .overall p { margin: 6px 0 0; color: #aaa; }
+        .suite { background: #16213e; border-radius: 8px; margin: 20px auto; max-width: 900px; overflow: hidden; }
+        .suite-header { padding: 14px 20px; display: flex; align-items: center; gap: 12px; background: #0f3460; }
+        .suite-stats { margin-left: auto; color: #888; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; }
+        th { padding: 10px 20px; text-align: left; background: #0a2540; color: #888; font-size: 0.85em; }
+        td { padding: 10px 20px; border-top: 1px solid #ffffff11; font-size: 0.9em; }
+        .failure-msg { color: #e74c3c; font-family: monospace; font-size: 0.8em; margin-top: 4px; white-space: pre-wrap; }
+        .timestamp { text-align: center; color: #555; font-size: 0.8em; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Automotive Digital Twin</h1>
+        <p>CI Test Dashboard</p>
+    </div>
+    <div class="overall">
+        <h2>ALL TESTS PASSED</h2>
+        <p>25 / 25 tests passing</p>
+    </div>
+    
+        <div class="suite">
+            <div class="suite-header" style="border-left: 4px solid #2ecc71">
+                <span style="color:#2ecc71">✓</span>
+                <strong>SanityCheck</strong>
+                <span class="suite-stats">1/1 passed — 0.s</span>
+            </div>
+            <table>
+                <thead><tr><th>Test</th><th>Status</th><th>Message</th></tr></thead>
+                <tbody>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> TrueIsTrue</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <div class="suite">
+            <div class="suite-header" style="border-left: 4px solid #2ecc71">
+                <span style="color:#2ecc71">✓</span>
+                <strong>SignalBus</strong>
+                <span class="suite-stats">10/10 passed — 0.s</span>
+            </div>
+            <table>
+                <thead><tr><th>Test</th><th>Status</th><th>Message</th></tr></thead>
+                <tbody>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> RegisterWriter_Success</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> RegisterWriter_DuplicateSameOwner</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> RegisterWriter_Conflict</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Write_And_Read</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Write_WrongOwner</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Write_UnregisteredSignal</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Read_UnregisteredSignal</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Has_RegisteredSignal</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Has_UnregisteredSignal</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> InitializeSignal_SetsDefaultValue</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <div class="suite">
+            <div class="suite-header" style="border-left: 4px solid #2ecc71">
+                <span style="color:#2ecc71">✓</span>
+                <strong>ConfigParser</strong>
+                <span class="suite-stats">7/7 passed — 0.s</span>
+            </div>
+            <table>
+                <thead><tr><th>Test</th><th>Status</th><th>Message</th></tr></thead>
+                <tbody>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadDouble_Success</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadDouble_WrongSection</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadDouble_WrongKey</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadString_Success</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadArray_Success</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> ReadArray_WrongKey</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> MalformedFile</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <div class="suite">
+            <div class="suite-header" style="border-left: 4px solid #2ecc71">
+                <span style="color:#2ecc71">✓</span>
+                <strong>BusConnector</strong>
+                <span class="suite-stats">6/6 passed — 0.s</span>
+            </div>
+            <table>
+                <thead><tr><th>Test</th><th>Status</th><th>Message</th></tr></thead>
+                <tbody>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> RegisterWrite_TranslatesCorrectly</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> RegisterRead_TranslatesCorrectly</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Write_UnregisteredInternalName</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Read_UnregisteredInternalName</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> Write_OwnershipEnforced</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> MultipleSignals_IndependentMappings</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <div class="suite">
+            <div class="suite-header" style="border-left: 4px solid #2ecc71">
+                <span style="color:#2ecc71">✓</span>
+                <strong>Regression</strong>
+                <span class="suite-stats">1/1 passed — 0.001s</span>
+            </div>
+            <table>
+                <thead><tr><th>Test</th><th>Status</th><th>Message</th></tr></thead>
+                <tbody>
+            <tr>
+                <td><span style="color:#2ecc71">✓</span> EVModel_MatchesGoldenReference</td>
+                <td style="color:#2ecc71">PASS</td>
+                <td></td>
+            </tr></tbody>
+            </table>
+        </div>
+    <div class="timestamp">Last updated: 2026-05-30 07:38 UTC</div>
+</body>
+</html>
