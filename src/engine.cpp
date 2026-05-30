@@ -51,7 +51,7 @@ void Engine::loadMappings(const std::vector<std::string>& model_list) {
     }
 }
 
-void Engine::run() {
+void Engine::run(const std::string& output_path) {
     // Load model list from already-parsed config
     std::vector<std::string> model_list = config.getArray("engine", "models");
 
@@ -69,7 +69,7 @@ void Engine::run() {
     double dt = config.get("simulation_loop_settings", "dt");
 
     // Logger setup
-    logger.open("simulation_output.csv");
+    logger.open(output_path);
     logger.writeHeader();
 
     double t_current = 0.0;

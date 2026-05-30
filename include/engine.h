@@ -23,7 +23,7 @@ private:
 public:
     Engine(Config& config);
     ~Engine();
-    void run();
+    void run(const std::string& output_path = "simulation_output.csv");
 };
 
 #endif
