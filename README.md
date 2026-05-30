@@ -8,7 +8,7 @@ A modular C++ simulation framework for vehicle systems research and simulation i
 - Support modular subsystem development where individual models can be replaced without modifying the core engine
 - Enable distributed co-simulation, FMU integration, and scalable experiment management as the framework matures
 
-## Current State — Chapters 1 and 2 Complete
+## Current State — Chapters 1, 2, and 3 Complete
 
 ### Chapter 1 — Simulation Core
 - CMake build system with C++17, external dependency management via FetchContent
@@ -23,6 +23,18 @@ A modular C++ simulation framework for vehicle systems research and simulation i
 - `Engine` — orchestrates startup, mapping file loading, bus construction, model wiring, and the simulation loop. Reads model participation list from config at runtime.
 - `EV_Model` refactored — physics model now reads inputs from and writes outputs to the bus through its connector. Parameters still loaded directly from config at startup (static config vs dynamic signals).
 - Mapping files (`interfaces/*.mapping.toml`) — runtime artifacts defining each model's interface contract: what it writes, what it reads, name translations, and default values for open-loop testing.
+
+### Chapter 3 — Verification Infrastructure
+- Framework source files extracted into `adt_core` static library — both the simulation executable and test executable link against it. New source files added in one place only.
+- Google Test integrated via CMake FetchContent, wired as a separate `run_tests` target
+- 24 unit and integration tests across four test files, all passing:
+  - `test_signal_bus.cpp` — 10 tests covering registration, ownership enforcement, read/write, and graceful failure handling
+  - `test_config.cpp` — 7 tests covering doubles, arrays, missing keys, and malformed files
+  - `test_bus_connector.cpp` — 6 tests covering name translation, ownership enforcement, and independent signal mappings
+  - `test_regression.cpp` — 1 bit-exact golden reference regression test for the full EV model simulation
+- CI pipeline via GitHub Actions — triggers on every pull request against `main`, builds on Ubuntu, runs full test suite
+- Branch protection on `main` — PRs cannot merge unless all CI checks pass
+- CI dashboard hosted on GitHub Pages — updates on every CI run, shows per-suite pass/fail status and failure messages
 
 ## Architecture
 
@@ -126,7 +138,7 @@ drag_coefficient = 0.5          # combined 0.5 * Cd * A * rho (kg/m)
 
 Planned chapters ahead:
 
-- **Chapter 3** — Verification infrastructure: unit tests, regression tests, CI pipeline
+- **Chapter 3** — ~~Verification infrastructure: unit tests, regression tests, CI pipeline~~ **Complete**
 - **Chapter 4** — Calibration and parameter sweep tooling
 - **Chapter 5** — Performance profiling and batch experiment management
 - **Chapter 6** — FMU integration and external model interoperability
