@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential python3
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Copy runtime files
+        run: |
+          cp -r interfaces build/interfaces
+          cp -r tests/data build/tests/data
+
+      - name: Run tests
+        run: |
+          cd build
+          ./run_tests --gtest_output=xml:test_results.xml
+        continue-on-error: true
+
+      - name: Generate dashboard
+        run: |
+          python3 scripts/generate_dashboard.py build/test_results.xml docs/index.html
+
+      - name: Deploy dashboard to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/
+          publish_branch: gh-pages
+
+      - name: Report test status
+        run: |
+          cd build
+          ./run_tests --gtest_output=xml:test_results.xml
