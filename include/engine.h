@@ -19,8 +19,7 @@ private:
     std::map<std::string, BusConnector*> connectors;
 
     void loadMappings(const std::vector<std::string>& model_list);
-    void initializeDefaultSignals();
-
+    
 public:
     Engine(Config& config);
     ~Engine();
