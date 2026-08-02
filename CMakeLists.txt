@@ -38,6 +38,7 @@ add_library(adt_core STATIC
     src/ev_model.cpp
     src/logger.cpp
     src/engine.cpp
+    src/scoring.cpp
 )
 target_include_directories(adt_core PUBLIC include/)
 target_link_libraries(adt_core PUBLIC tomlplusplus::tomlplusplus)
